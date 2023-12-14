@@ -16,11 +16,11 @@ export class AssetService {
                     extension: extension[extension.length - 1],
                     fileName: file.originalname,
                     url: file.location,
-                    projects: {
+                    projects: data.project ? {
                         connect: {
-                            id: data.project || undefined,
+                            id: data.project,
                         },
-                    },
+                    } : undefined,
                 },
             });
 
