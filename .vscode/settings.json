@@ -1,0 +1,17 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "103.82.241.96",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "SS",
+            "database": "k8573224_smart_school",
+            "username": "k8573224_smart_school"
+        }
+    ]
+}
