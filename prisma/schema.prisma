@@ -22,10 +22,18 @@ model user {
   @@map("user")
 }
 
+// public string name;
+// public string author;
+// public string description;
+// public bool isPublic;
+
 model project {
-  id       String @id
-  manifest Json
-  data     Json
+  id          String   @id
+  data        Json
+  name        String?
+  author      String?
+  description String?
+  isPublic    Boolean?
 
   users  user[]  @relation("user_to_projects")
   assets asset[] @relation("project_to_assets")

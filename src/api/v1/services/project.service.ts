@@ -2,14 +2,16 @@ import prisma from "../../../utilities/prisma";
 
 export class ProjectService {
     public static async create(data: any){
-        console.log(data);
-        
         try {
+            var payload = data.manifest;
+
+            payload.data = data.data || undefined;
+
             const project = await prisma.project.upsert({
-                create: data,
-                update: data,
+                create: payload,
+                update: payload,
                 where: { 
-                   id: data.id
+                    id: payload.id
                 },
             });
 
@@ -22,10 +24,15 @@ export class ProjectService {
     public static async getAll(){
         try {
             const projects = await prisma.project.findMany({
+                where: {
+                    isPublic: true,
+                },
                 select: {
                     id: true,
-                    manifest: true,
-                }
+                    name: true,
+                    author: true,
+                    description: true,
+                },
             });
 
             return projects;
@@ -38,11 +45,6 @@ export class ProjectService {
         try {
             const project = await prisma.project.findUnique({
                 where: { id },
-                select: {
-                    id: true,
-                    manifest: true,
-                    data: true,
-                }
             });
 
             return project;

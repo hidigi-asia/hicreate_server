@@ -3,10 +3,8 @@ import { ProjectService } from "../services/project.service";
 
 export class ProjectController {
     public static async create(req: Request, res: Response) {
-        console.log(req.body);
-        
         try {
-            const project = await ProjectService.create(req.body.data);
+            const project = await ProjectService.create(req.body);
 
             res.status(201).json(project);
         } catch (error) {
