@@ -5,8 +5,12 @@ export class ProjectService {
         console.log(data);
         
         try {
-            const project = await prisma.project.create({
-                data,
+            const project = await prisma.project.upsert({
+                create: data,
+                update: data,
+                where: { 
+                   id: data.id
+                },
             });
 
             return project;
