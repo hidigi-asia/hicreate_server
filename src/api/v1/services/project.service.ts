@@ -3,20 +3,20 @@ import prisma from "../../../utilities/prisma";
 export class ProjectService {
     public static async create(data: any){
         try {
-            var payload = data.manifest;
-
-            payload.data = data.data || undefined;
+            var manifest = JSON.parse(data.manifest);
 
             const project = await prisma.project.upsert({
-                create: payload,
-                update: payload,
+                create: manifest,
+                update: manifest,
                 where: { 
-                    id: payload.id
+                    id: manifest.id,
                 },
             });
 
             return project;
         } catch (error) {
+            console.log(error);
+            
             throw error;
         }
     }

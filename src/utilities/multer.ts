@@ -32,8 +32,9 @@ const upload = multer({
             cb(null, { fieldName: file.fieldname });
         },
         key: function (req, file, cb) {
-            const filename = uuidv4();
-            cb(null, filename);
+            console.log(file);
+            
+            cb(null, file.originalname);
         }
     })
 })

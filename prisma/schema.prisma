@@ -22,14 +22,8 @@ model user {
   @@map("user")
 }
 
-// public string name;
-// public string author;
-// public string description;
-// public bool isPublic;
-
 model project {
-  id          String   @id
-  data        Json
+  id          String   @id @unique
   name        String?
   author      String?
   description String?
@@ -42,7 +36,7 @@ model project {
 }
 
 model asset {
-  id        String @id
+  id        String @id @unique
   extension String
   fileName  String @map("file_name")
   url       String

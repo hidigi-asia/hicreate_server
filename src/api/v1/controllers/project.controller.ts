@@ -28,7 +28,7 @@ export class ProjectController {
         try {
             const project = await ProjectService.getById(req.params.id);
 
-            res.status(200).json(project);
+            res.redirect("https://hicreate-bucket.s3.ap-southeast-3.amazonaws.com/" + project.id);
         } catch (error) {
             res.status(500).json({ message: error });
         }
